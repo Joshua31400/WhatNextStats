@@ -1,5 +1,6 @@
 from data_clean import DataCleaner
 from data_fetch import DataFetch
+from roi_per_genre import RoiPerGenre
 from seasonality import Seasonality
 
 
@@ -12,6 +13,7 @@ class App:
         df_clean = cleaner.run_pipeline()
 
         Seasonality(df_clean).calculate_stats()
+        RoiPerGenre(df_clean).calculate_stats()
 
         print(f" Cleaned movies: {len(df_clean)}")
         print(f"Memory weight: {df_clean.memory_usage(deep=True).sum() / 1024:.2f} KB")
