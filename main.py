@@ -15,7 +15,7 @@ if __name__ == "__main__":
     response = requests.get(
         "https://api.themoviedb.org/3/movie/popular",
         headers=HEADERS,
-        params={"language": "en-US", "page": 1}
+        params=params
     )
 
     print(response.text)
