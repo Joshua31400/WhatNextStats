@@ -59,10 +59,26 @@ class DataCleaner:
         self.df = self.df[~without_votes]
 
     def run_pipeline(self):
+        print("Filtering columns...")
         self.filter_columns()
+        print("DONE!")
+
+        print("Removing duplicates...")
         self.remove_duplicates()
+        print("DONE!")
+
+        print("Normalizing data types...")
         self.normalize_types()
+        print("DONE!")
+
+        print("Cleaning string columns...")
         self.clean_strings()
+        print("DONE!")
+
+        print("Handling missing values...")
         self.handle_missing_values()
+        print("DONE!")
+
+        print("Data cleaning completed.")
 
         return self.df
