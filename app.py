@@ -8,7 +8,7 @@ from seasonality import Seasonality
 class App:
     def run(self):
         fetcher = DataFetch()
-        movies = fetcher.load_cache(movie_amount=20)
+        movies = fetcher.load_cache(movie_amount=2000)
 
         cleaner = DataCleaner(movies)
         df_clean = cleaner.run_pipeline()
