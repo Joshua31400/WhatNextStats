@@ -11,10 +11,13 @@ class DataFetch:
         }
 
     def fetch_data(self, page_amount=100):
+        print("Fetching data...")
         result = []
         for i in range(1, page_amount):
             params = {"language": "en-US", "page": i}
             response = requests.get("https://api.themoviedb.org/3/movie/popular", headers=self.HEADERS, params=params)
             data = response.json()
             result.extend(data["results"])
+            print("Page: ", i, " - movies fetched: ", len(result))
+        print("Data fetching completed.")
         return result
