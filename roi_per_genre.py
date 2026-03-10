@@ -7,8 +7,8 @@ class RoiPerGenre:
 
     def calculate_stats(self):
         df = self.df.dropna(subset=["budget_M", "revenue_M"])
-        df = df[df["budget_M"] > 0]
-        df["roi"] = (df["revenue_M"] - df["budget_M"]) / df["budget_M"] * 100
+        df = df[df["budget_M"] > 1]
+        df["roi"] = ((df["revenue_M"] - df["budget_M"]) / df["budget_M"]) * 100
 
         df_exploded = df.explode("genres")
         roi_by_genre = df_exploded.groupby("genres")["roi"].mean().sort_values()
