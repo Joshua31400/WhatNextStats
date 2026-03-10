@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 class HeatmapGenerator:
-    def __init__(self, df: pd.DataFrame, movie_amount: int = 100):
+    def __init__(self, df: pd.DataFrame, movie_amount: int = 200):
         self.df = df.copy()
         self.df = self.df.head(movie_amount)
 
