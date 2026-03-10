@@ -1,3 +1,4 @@
+from analyse_genres import generer_box_plot_genres
 from data_clean import DataCleaner
 from data_fetch import DataFetch
 from duration_per_year import DurationPerYear
@@ -21,6 +22,9 @@ class App:
         Seasonality(df_clean).calculate_stats()
         RoiPerGenre(df_clean).calculate_stats()
         DurationPerYear(df_clean).calculate_stats()
+
         HeatmapGenerator(df_clean).generate()
+
+        #generer_box_plot_genres(movies)
 
 

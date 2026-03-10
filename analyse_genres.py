@@ -3,28 +3,21 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 
-def generer_box_plot_genres(movies_data, headers):
-    # 1. Récupérer la correspondance ID -> Nom du genre
-    import requests
-    url_genres = "https://api.themoviedb.org/3/genre/movie/list?language=fr"
-    genres_list = requests.get(url_genres, headers=headers).json()['genres']
-    genre_map = {g['id']: g['name'] for g in genres_list}
-
-    # 2. Préparer les données pour Pandas
+def generer_box_plot_genres(movies_data):
     results = []
     for movie in movies_data:
-        for genre_id in movie.get('genre_ids', []):
+        for genre in movie.get('genre_ids', []):
             results.append({
                 'Titre': movie.get('title'),
-                'Genre': genre_map.get(genre_id),
+                'Genre': genre,
                 'Note': movie.get('vote_average')
             })
 
     df = pd.DataFrame(results)
+    df = df.dropna(subset=['Genre', 'Note'])
 
-    # 3. Création du Box Plot
     plt.figure(figsize=(12, 8))
-    sns.boxplot(data=df, x='Genre', y='Note', palette="Set3")
+    sns.boxplot(data=df, x='Genre', y='Note', color="#4FC3F7")
     plt.xticks(rotation=45)
     plt.title("Dispersion des notes par genre (Films Populaires)")
     plt.tight_layout()
