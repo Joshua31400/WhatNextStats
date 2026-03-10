@@ -87,9 +87,4 @@ class HeatmapGenerator:
         df_enriched = self._add_year(df_exploded)
         pivot = self._build_pivot(df_enriched)
 
-        print(f"Detected genres: {list(pivot.index)}")
-        print(f"Detected years: {list(pivot.columns)}")
-        print("\nPivot table (average rating by genre × year):")
-        print(pivot.to_string())
-
         self._draw_heatmap(pivot)

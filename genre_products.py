@@ -9,7 +9,7 @@ class GenresProduits:
         df_exploded = df_exploded.dropna(subset=["genres"])
         df_exploded = df_exploded[df_exploded["genres"] != "Unknown"]
 
-        genres_count = df_exploded["genres"].value_counts().head(15).sort_values()
+        genres_count = df_exploded["genres"].value_counts().sort_values()
 
         colors = ["#FF6B6B" if v == genres_count.max() else "#4FC3F7" for v in genres_count.values]
 

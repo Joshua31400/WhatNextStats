@@ -19,16 +19,16 @@ class App:
 
         print(f" Cleaned movies: {len(df_clean)}")
         print(f"Memory weight: {df_clean.memory_usage(deep=True).sum() / 1024:.2f} KB")
-        print(df_clean.to_string())
+        #print(df_clean.to_string())
 
         Seasonality(df_clean).calculate_stats()
         RoiPerGenre(df_clean).calculate_stats()
         DurationPerYear(df_clean).calculate_stats()
-        EvolutionTemporelle(df_clean).calculate_stats()
-        GenresProduits(df_clean).calculate_stats()
-
 
         HeatmapGenerator(df_clean).generate()
+
+        EvolutionTemporelle(df_clean).calculate_stats()
+        GenresProduits(df_clean).calculate_stats()
 
         #generer_box_plot_genres(movies)
 
